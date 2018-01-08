@@ -8,12 +8,12 @@ export default function(){
         {
           id: 1,
           name: "Bitcoin",
-          price: [1701, 1706, 1721, 1670, 1707]
+          price: [1500, 1706, 1300, 1670, 1707]
         },
         {
           id: 2,
           name: "Ethereum",
-          price: [800, 805, 808, 820, 830]
+          price: [800, 805, 700, 820, 1000]
         }
       ]
     },

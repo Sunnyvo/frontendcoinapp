@@ -10,7 +10,7 @@ const middleware = applyMiddleware(
 );
 
 const reducers = combineReducers({
-  platforms: PlatformReducer,
+  platforms: PlatformReducer, 
   activePlatform: ActivePlatformReducer,
 })
 
