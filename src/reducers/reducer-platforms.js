@@ -7,11 +7,13 @@ export default function(){
       [
         {
           id: 1,
-          name: "Bitcoin"
+          name: "Bitcoin",
+          price: [1701, 1706, 1721, 1670, 1707]
         },
         {
           id: 2,
-          name: "Ethereum"
+          name: "Ethereum",
+          price: [800, 805, 808, 820, 830]
         }
       ]
     },
@@ -22,13 +24,35 @@ export default function(){
       [
         {
           id: 1,
-          name: "Bitcoin"
+          name: "Bitcoin",
+          price: [1701, 1706, 1721, 1670, 1707]
         },
         {
           id: 2,
-          name: "Ethereum"
+          name: "Ethereum",
+          price: [800, 805, 808, 820, 830]
         }
       ]
+
+
+    },
+    {
+      id: 3,
+      name: "Poloniex",
+      coins:
+      [
+        {
+          id: 1,
+          name: "Bitcoin",
+          price: [1700, 1705, 1720, 1679, 1702]
+        },
+        {
+          id: 2,
+          name: "Ethereum",
+          price: [800, 805, 808, 820, 830]
+        }
+      ]
+
 
     }
   ]
