@@ -1,59 +1,17 @@
+import data from '../default.json';
+ import ActionCable from 'actioncable';
+var cable = ActionCable.createConsumer('ws://localhost:3000/cable')
+
+var ex = {
+  subscribe(received) {
+    cable.subscriptions.create('PriceChannel', {
+      received: function(data) {
+        console.log('data:', data);
+      },
+    });
+  }
+}
 export default function(){
-  return [
-    {
-      id: 1,
-      name: "Coinbase",
-      coins:
-      [
-        {
-          id: 1,
-          name: "Bitcoin",
-          price: [1500, 1706, 1300, 1670, 1707]
-        },
-        {
-          id: 2,
-          name: "Ethereum",
-          price: [800, 805, 700, 820, 1000]
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: "Bittrex",
-      coins:
-      [
-        {
-          id: 1,
-          name: "Bitcoin",
-          price: [1701, 1706, 1721, 1670, 1707]
-        },
-        {
-          id: 2,
-          name: "Ethereum",
-          price: [800, 805, 808, 820, 830]
-        }
-      ]
-
-
-    },
-    {
-      id: 3,
-      name: "Poloniex",
-      coins:
-      [
-        {
-          id: 1,
-          name: "Bitcoin",
-          price: [1700, 1705, 1720, 1679, 1702]
-        },
-        {
-          id: 2,
-          name: "Ethereum",
-          price: [800, 805, 808, 820, 830]
-        }
-      ]
-
-
-    }
-  ]
+  console.log(ex)
+  return data
 }
