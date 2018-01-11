@@ -5,13 +5,13 @@ function withResult(WrappedComponent) {
   return class extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {  
+      this.state = {
         platforms: []
       }
     }
 
     componentDidMount() {
-      getSearchResult('http://localhost:3000/platforms').then((response) => {
+      getResult('http://localhost:3000/platforms').then((response) => {
         this.setState({
           platforms: response
         })
