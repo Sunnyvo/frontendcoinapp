@@ -12,6 +12,7 @@ const middleware = applyMiddleware(
   logger,
 );
 
+
 const reducers = combineReducers({
   // updatePlatforms: updatePlatforms,
   platforms: PlatformReducer,

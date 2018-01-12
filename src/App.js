@@ -11,7 +11,7 @@ const mapStateToProps = (state = {}) => {
 class App extends Component {
 
   componentDidMount(){
-    console.log('props:', this.props)
+
     fetch('http://localhost:3000/sessions', {
       method: 'post',
       headers: {
@@ -27,18 +27,15 @@ class App extends Component {
     .then(() =>{
 
       let token = window.sessionStorage.getItem('key')
-      console.log('i got the token:',token)
       if (token !== "")
       {
-        console.log('i got the apiCable:',this.props.apiCable)
         if (!this.props.apiCable.platforms) {
           console.log('osh somthing is wrong')
           this.props.apiCable.platforms = this.props.apiCable.subscriptions.create('PriceChannel',{
             connected: function() { console.log(" hello Guy we got the  connected") },
             disconnected: function() { console.log("fuck yeah you lost me!") },
             received: (data) => {
-              console.log(data)
-              this.props.dispatch(updatePlatforms(data))
+              this.props.dispatch(updatePlatforms(data ,this.props.activePlatform))
             }
           })
         }

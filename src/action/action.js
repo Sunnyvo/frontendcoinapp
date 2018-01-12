@@ -1,5 +1,4 @@
 export const  selectPlatform = (platform) => {
-  console.log ("hey boy u click on me:", platform.name);
   return {
     type: "PLATFORM_SELECTED",
     payload: platform
@@ -8,19 +7,38 @@ export const  selectPlatform = (platform) => {
 
 
 const receivePrices = (platforms) =>{
-  console.log('we will update prices!')
 	return {
 		type: 'UPDATE_PRICE',
 	  payload: platforms
 	}
 }
 
-export const updatePlatforms = (platforms) =>{
-  console.log('why cant')
+const updatePricePlatform = (platform) => {
+      return{
+        type: "PLATFORM_SELECTED",
+        payload: platform
+      }
+
+}
+
+
+export const updatePlatforms = (data, current_platform) =>{
+  const platforms =data.platforms.platforms
   return dispatch => {
-    console.log('json:', platforms)
     // var data = JSON.parse(platforms)
-  	dispatch(receivePrices(platforms))
+    dispatch(receivePrices(data))
+    if (current_platform && current_platform.name)
+      {
+        platforms.forEach(
+          (platform) => {
+
+            if (platform.name === current_platform.name){
+              console.log(platform)
+              dispatch(updatePricePlatform(platform))
+            }
+          }
+        )
+      }
   }
 }
 

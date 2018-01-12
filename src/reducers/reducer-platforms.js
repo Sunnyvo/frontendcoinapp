@@ -1,10 +1,10 @@
 import data from '../default.json';
 
 export default function (state = data,action){
-  // console.log('Hello:',action.type)
+  console.log('Hello payload:',action.payload)
   switch(action.type){
     case "UPDATE_PRICE":
-      return action.payload
+      return action.payload.platforms.platforms
     default :
       return state
   }
