@@ -9,18 +9,22 @@ Time spent: **12** hours spent in total
 
 ## User Stories
 ## How to start:
-step1)
+**step 1**
+
 - git clone https://github.com/Sunnyvo/frontendcoinapp for frontend.
 - git clone https://github.com/Sunnyvo/coinapp for backend.
-step2)
+**step 2**
+
 - Backend
   + bundle (update gem)
   + Rails s (port 3000) for backend
 - Frontend
   + npm install ( redependencies)
   + Yarn start or npm start for Frontend
-step3)
-- Click choose the market platform that we wanna see the price.
+
+**step 3**
+
+- Choose the market platform that we wanna see the price.
 
 
 ## Video Walkthrough
