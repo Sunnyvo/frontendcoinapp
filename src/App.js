@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import './App.css';
 import PlatformList from "./containers/platformlist.js";
 import CoinList from './containers/coinlist.js';
-
+import {updatePlatforms} from './action/action.js'
+const mapStateToProps = (state = {}) => {
+  return {...state};
+};
 
 class App extends Component {
+
   componentDidMount(){
+    console.log('props:', this.props)
     fetch('http://localhost:3000/sessions', {
       method: 'post',
       headers: {
@@ -32,7 +38,7 @@ class App extends Component {
             disconnected: function() { console.log("fuck yeah you lost me!") },
             received: (data) => {
               console.log(data)
-              this.props.updatePlatforms(data)
+              this.props.dispatch(updatePlatforms(data))
             }
           })
         }
@@ -42,11 +48,8 @@ class App extends Component {
   }
 
 
-  fetchAccessToken(){
-
-  }
-
   render() {
+
     // const {apiCable} = this.props
     return (
       <div className="App">
@@ -57,4 +60,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default  connect(mapStateToProps)(App);

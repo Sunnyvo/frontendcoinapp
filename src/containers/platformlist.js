@@ -6,6 +6,7 @@ import { Container, Title } from 'bloomer';
 import {selectPlatform } from '../action/action'
 class PlatformList extends Component{
   createListItems(){
+    console.log('haha :) I have platforms:', this.props.platforms)
     return this.props.platforms.map(
       (platform) => {
         return (

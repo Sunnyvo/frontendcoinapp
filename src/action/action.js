@@ -11,16 +11,16 @@ const receivePrices = (platforms) =>{
   console.log('we will update prices!')
 	return {
 		type: 'UPDATE_PRICE',
-	  platforms
+	  payload: platforms
 	}
 }
 
 export const updatePlatforms = (platforms) =>{
   console.log('why cant')
   return dispatch => {
-    console.log('please')
-    var data = JSON.parse(platforms)
-  	dispatch(receivePrices(data))
+    console.log('json:', platforms)
+    // var data = JSON.parse(platforms)
+  	dispatch(receivePrices(platforms))
   }
 }
 
