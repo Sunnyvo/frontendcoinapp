@@ -16,21 +16,38 @@ class App extends Component {
     })
     .then((response)=> response.json())
     .then((responseData) => {
-      console.log(responseData.data.user.authentication_token);
       window.sessionStorage.setItem('key',responseData.data.user.authentication_token)
-      this.setState({
-        clientToken: responseData.data.user.authentication_token,
-      });
     })
-    
+    .then(() =>{
 
+      let token = window.sessionStorage.getItem('key')
+      console.log('i got the token:',token)
+      if (token !== "")
+      {
+        console.log('i got the apiCable:',this.props.apiCable)
+        if (!this.props.apiCable.platforms) {
+          console.log('osh somthing is wrong')
+          this.props.apiCable.platforms = this.props.apiCable.subscriptions.create('PriceChannel',{
+            connected: function() { console.log(" hello Guy we got the  connected") },
+            disconnected: function() { console.log("fuck yeah you lost me!") },
+            received: (data) => {
+              console.log(data)
+              this.props.updatePlatforms(data)
+            }
+          })
+        }
+      }
+
+    })
   }
+
 
   fetchAccessToken(){
 
   }
 
   render() {
+    // const {apiCable} = this.props
     return (
       <div className="App">
         <PlatformList/>

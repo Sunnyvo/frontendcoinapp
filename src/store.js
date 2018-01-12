@@ -3,6 +3,8 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {logger} from 'redux-logger'
 import PlatformReducer from './reducers/reducer-platforms'
 import ActivePlatformReducer from './reducers/reducer-active-platform'
+import thunk from 'redux-thunk';
+// import {updatePlatforms} from './action/action.js'
 
 
 const middleware = applyMiddleware(
@@ -10,7 +12,8 @@ const middleware = applyMiddleware(
 );
 
 const reducers = combineReducers({
-  platforms: PlatformReducer, 
+  // updatePlatforms: updatePlatforms,
+  platforms: PlatformReducer,
   activePlatform: ActivePlatformReducer,
 })
 

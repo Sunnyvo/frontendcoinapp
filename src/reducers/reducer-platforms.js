@@ -1,9 +1,11 @@
 import data from '../default.json';
-import ActionCable from "actioncable";
-const token = window.sessionStorage.getItem('key')
-const App = {};
-App.cable = ActionCable.createConsumer(`ws://localhost:3001/cable?token=${token}`);
 
-export default function(){
-  return data
+export default function (state = data,action){
+  // console.log('Hello:',action.type)
+  switch(action.type){
+  //   case "UPDATE_PRICE":
+  //     return action.payload
+    default :
+      return state
+  }
 }

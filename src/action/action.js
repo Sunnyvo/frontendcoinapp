@@ -7,3 +7,22 @@ export const  selectPlatform = (platform) => {
 }
 
 
+const receivePrices = (platforms) =>{
+  console.log('we will update prices!')
+	return {
+		type: 'UPDATE_PRICE',
+	  platforms
+	}
+}
+
+export const updatePlatforms = (platforms) =>{
+  console.log('why cant')
+  return dispatch => {
+    console.log('please')
+    var data = JSON.parse(platforms)
+  	dispatch(receivePrices(data))
+  }
+}
+
+
+
