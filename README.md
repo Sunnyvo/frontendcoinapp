@@ -13,6 +13,7 @@ Time spent: **12** hours spent in total
 
 - git clone https://github.com/Sunnyvo/frontendcoinapp for frontend.
 - git clone https://github.com/Sunnyvo/coinapp for backend.
+
 **step 2**
 
 - Backend
