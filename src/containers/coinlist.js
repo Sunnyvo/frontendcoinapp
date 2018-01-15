@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Container,Title, Field , Label} from 'bloomer';
-import {LineChart, Line, XAxis, CartesianGrid, YAxis} from 'recharts'
+import {LineChart, Line, XAxis, CartesianGrid, YAxis, BarChart, Bar} from 'recharts'
 
 class CoinList extends Component {
 
@@ -24,13 +24,21 @@ class CoinList extends Component {
             <Label> {coin.name} </Label>
             <p> {" : " + coin.prices[0].price}</p>
           </Field>
-          <Field>
+          {/* <Field>
             <LineChart width={600} height={300} data={data}>
               <Line type="monotone" dataKey="price" stroke="#8884d8" />
               <CartesianGrid stroke="#ccc" />
               <XAxis dataKey="time" />
               <YAxis />
             </LineChart>
+          </Field> */}
+          <Field>
+            <BarChart width={600} height={300} data={data}>
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Bar type="monotone" dataKey="price" barSize={30} fill="#8884d8"
+                />
+            </BarChart>
           </Field>
           </div>
         );

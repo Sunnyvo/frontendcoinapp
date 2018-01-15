@@ -35,6 +35,7 @@ class App extends Component {
             connected: function() { console.log(" hello Guy we got the  connected") },
             disconnected: function() { console.log("fuck yeah you lost me!") },
             received: (data) => {
+              console.log('reeeeee!')
               this.props.dispatch(updatePlatforms(data ,this.props.activePlatform))
             }
           })
