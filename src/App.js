@@ -32,10 +32,12 @@ class App extends Component {
         if (!this.props.apiCable.platforms) {
           console.log('osh somthing is wrong')
           this.props.apiCable.platforms = this.props.apiCable.subscriptions.create('PriceChannel',{
-            connected: function() { console.log(" hello Guy we got the  connected") },
-            disconnected: function() { console.log("fuck yeah you lost me!") },
+            connected: function() { console.log(" datahello Guy we got the connected") },
+            disconnected: function() { console.log("disconnected") },
             received: (data) => {
-              console.log('reeeeee!')
+              debugger
+              data = JSON.parse(data.prices)
+              console.log(data)
               this.props.dispatch(updatePlatforms(data ,this.props.activePlatform))
             }
           })

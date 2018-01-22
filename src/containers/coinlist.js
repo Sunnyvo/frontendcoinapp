@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Container,Title, Field , Label} from 'bloomer';
-import {LineChart, Line, XAxis, CartesianGrid, YAxis, BarChart, Bar} from 'recharts'
-
+import Chart from '../Chart';
+import { getData } from '../utils'
+// import {LineChart, Line, XAxis, CartesianGrid, YAxis, BarChart, Bar} from 'recharts'
+import { TypeChooser } from "react-stockcharts/lib/helper";
 class CoinList extends Component {
 
+  componentDidMount() {
+		getData().then(data => {
+      debugger
+			this.setState({ data })
+		})
+	}
   createListCoins(){
     return this.props.platform.coins.map(
       (coin) => {
@@ -16,6 +24,9 @@ class CoinList extends Component {
             }
           })
         }
+        if (this.state == null) {
+          return <div>Loading...</div>
+        }
         return(
           <div>
           <Field isGrouped
@@ -24,21 +35,10 @@ class CoinList extends Component {
             <Label> {coin.name} </Label>
             <p> {" : " + coin.prices[0].price}</p>
           </Field>
-          {/* <Field>
-            <LineChart width={600} height={300} data={data}>
-              <Line type="monotone" dataKey="price" stroke="#8884d8" />
-              <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="time" />
-              <YAxis />
-            </LineChart>
-          </Field> */}
           <Field>
-            <BarChart width={600} height={300} data={data}>
-              <XAxis dataKey="time" />
-              <YAxis />
-              <Bar type="monotone" dataKey="price" barSize={30} fill="#8884d8"
-                />
-            </BarChart>
+            <TypeChooser>
+              {type => <Chart type={type} data={this.state.data} />}
+            </TypeChooser>
           </Field>
           </div>
         );
