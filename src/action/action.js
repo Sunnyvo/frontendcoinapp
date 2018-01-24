@@ -1,4 +1,5 @@
 export const  selectPlatform = (platform) => {
+
   return {
     type: "PLATFORM_SELECTED",
     payload: platform
@@ -22,11 +23,11 @@ const updatePricePlatform = (platform) => {
 }
 
 
-export const updatePlatforms = (data, current_platform) =>{
-  const platforms =data.platforms.platforms
+export const updatePlatforms = (platforms, current_platform) =>{
+  // const data =data
   return dispatch => {
     // var data = JSON.parse(platforms)
-    dispatch(receivePrices(data))
+    dispatch(receivePrices(platforms))
     if (current_platform && current_platform.name)
       {
         platforms.forEach(

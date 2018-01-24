@@ -31,32 +31,46 @@ class App extends Component {
       {
         if (!this.props.apiCable.platforms) {
           console.log('osh somthing is wrong')
-          this.props.apiCable.platforms = this.props.apiCable.subscriptions.create('PriceChannel',{
-            connected: function() { console.log(" datahello Guy we got the connected") },
-            disconnected: function() { console.log("disconnected") },
+          this.props.apiCable.platforms = this.props.apiCable.subscriptions.create({channel: 'PriceChannel'},{
+            connected: () => { console.log(" hello Guy we got the connected") },
+            disconnected: () => { console.log("disconnected") },
             received: (data) => {
-              debugger
-              data = JSON.parse(data.prices)
+              // debugger
+              data = JSON.parse(data.data)
               console.log(data)
-              this.props.dispatch(updatePlatforms(data ,this.props.activePlatform))
+              this.setState({
+                loading: true
+              })
+              this.props.dispatch(updatePlatforms(data.platforms ,this.props.activePlatform))
             }
-          })
+        }
+        )
         }
       }
-
     })
+    // .then(() =>{
+    //   this.setState({
+    //     loading: true
+    //   })
+    // })
   }
 
 
   render() {
-
-    // const {apiCable} = this.props
+    if (this.state != null && this.state.loading ==true)
     return (
       <div className="App">
         <PlatformList/>
         <CoinList/>
       </div>
     );
+    else
+    return(
+      <div>
+        isLoading
+      </div>
+
+    )
   }
 }
 

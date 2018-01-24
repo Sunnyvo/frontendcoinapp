@@ -2,45 +2,51 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Container,Title, Field , Label} from 'bloomer';
 import Chart from '../Chart';
-import { getData } from '../utils'
-// import {LineChart, Line, XAxis, CartesianGrid, YAxis, BarChart, Bar} from 'recharts'
+
 import { TypeChooser } from "react-stockcharts/lib/helper";
+
+// import { timeParse } from "d3-time-format";
+
+// const parseDate = timeParse("%Y-%m-%d");
+
 class CoinList extends Component {
 
+
   componentDidMount() {
-		getData().then(data => {
-      debugger
-			this.setState({ data })
-		})
+
 	}
   createListCoins(){
     return this.props.platform.coins.map(
       (coin) => {
-        if (coin.prices.length > 0){
-          var data = coin.prices.map((p,index) => {
-            return {
-              time: (40 -index*10) + "s ago",
-              price: p.price
-            }
-          })
-        }
-        if (this.state == null) {
-          return <div>Loading...</div>
-        }
+        coin.prices.forEach(
+          (price) => {
+            // console.clear()
+            // debugger
+            // console.log(price.date)
+            price.date = new Date(price.date);
+          }
+        )
+        coin.prices.columns = ["date", "open", "close", "low", "high"]
+        // debugger
+        console.log(coin.prices)
+        // if (this.state == null) {
+        //   return <div>Loading...</div>
+        // }
         return(
           <div>
-          <Field isGrouped
-          key={coin.id}
-          >
-            <Label> {coin.name} </Label>
-            <p> {" : " + coin.prices[0].price}</p>
-          </Field>
-          <Field>
-            <TypeChooser>
-              {type => <Chart type={type} data={this.state.data} />}
-            </TypeChooser>
-          </Field>
-          </div>
+              <Field isGrouped
+              key={coin.id}
+              >
+                <Label> {coin.name} </Label>
+                <p> {" : " + coin.prices[coin.prices.length-1].close}</p>
+              </Field>
+              <Field>
+                <TypeChooser>
+                  {type => <Chart type={type} data={coin.prices} />}
+                  {/* {type => <Chart type={type} data={this.state.data} />} */}
+                </TypeChooser>
+              </Field>
+            </div>
         );
     }
     )

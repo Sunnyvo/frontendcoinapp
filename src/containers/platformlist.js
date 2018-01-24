@@ -33,7 +33,7 @@ class PlatformList extends Component{
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({selectPlatform: selectPlatform},dispatch)
+  return bindActionCreators({selectPlatform: selectPlatform}, dispatch)
 }
 
 function mapStateToProps(state){
