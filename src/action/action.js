@@ -24,9 +24,7 @@ const updatePricePlatform = (platform) => {
 
 
 export const updatePlatforms = (platforms, current_platform) =>{
-  // const data =data
   return dispatch => {
-    // var data = JSON.parse(platforms)
     dispatch(receivePrices(platforms))
     if (current_platform && current_platform.name)
       {

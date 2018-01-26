@@ -22,7 +22,7 @@ class PlatformList extends Component{
     return(
       <div>
         <Container>
-          <Title> List Platform:</Title>
+          <Title> List Platforms :</Title>
           <ul>
             {this.createListItems()}
           </ul>
@@ -45,5 +45,5 @@ function mapStateToProps(state){
 
 
 export default connect(mapStateToProps,matchDispatchToProps)(PlatformList);
-// export default {PlatformList};
+
 

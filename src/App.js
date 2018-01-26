@@ -32,10 +32,10 @@ class App extends Component {
         if (!this.props.apiCable.platforms) {
           console.log('osh somthing is wrong')
           this.props.apiCable.platforms = this.props.apiCable.subscriptions.create({channel: 'PriceChannel'},{
-            connected: () => { console.log(" hello Guy we got the connected") },
+            connected: () => { console.log(" hello Guy we got the vytgygt") },
             disconnected: () => { console.log("disconnected") },
             received: (data) => {
-              // debugger
+              console.log('hi')
               data = JSON.parse(data.data)
               console.log(data)
               this.setState({
@@ -48,13 +48,8 @@ class App extends Component {
         }
       }
     })
-    // .then(() =>{
-    //   this.setState({
-    //     loading: true
-    //   })
-    // })
-  }
 
+  }
 
   render() {
     if (this.state != null && this.state.loading ==true)

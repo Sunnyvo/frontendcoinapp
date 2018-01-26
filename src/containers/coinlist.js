@@ -20,18 +20,11 @@ class CoinList extends Component {
       (coin) => {
         coin.prices.forEach(
           (price) => {
-            // console.clear()
-            // debugger
-            // console.log(price.date)
             price.date = new Date(price.date);
           }
         )
         coin.prices.columns = ["date", "open", "close", "low", "high"]
-        // debugger
         console.log(coin.prices)
-        // if (this.state == null) {
-        //   return <div>Loading...</div>
-        // }
         return(
           <div>
               <Field isGrouped
@@ -43,7 +36,6 @@ class CoinList extends Component {
               <Field>
                 <TypeChooser>
                   {type => <Chart type={type} data={coin.prices} />}
-                  {/* {type => <Chart type={type} data={this.state.data} />} */}
                 </TypeChooser>
               </Field>
             </div>
