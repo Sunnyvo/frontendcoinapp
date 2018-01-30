@@ -38,8 +38,8 @@ class CandleStickChart extends React.Component {
 
 				<Chart id={1} yExtents={d => [d.high, d.low]}>
 					<XAxis axisAt="bottom" orient="bottom" ticks={6}/>
-					<YAxis axisAt="left" orient="left" ticks={5} />
-					<CandlestickSeries width={timeIntervalBarWidth(utcMinute)}/>
+					<YAxis axisAt="left" orient="left" ticks={10} />
+					<CandlestickSeries width={ 5}/>
 				</Chart>
 			</ChartCanvas>
 		);
