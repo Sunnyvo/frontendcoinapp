@@ -4,17 +4,18 @@ import {connect} from 'react-redux';
 import "bulma/css/bulma.css";
 import { Container, Title } from 'bloomer';
 import {selectPlatform } from '../action/action'
+import { ListGroup, ListGroupItem } from 'reactstrap';
 class PlatformList extends Component{
   createListItems(){
     return this.props.platforms.map(
       (platform) => {
         return (
-          <li
+          <ListGroupItem
             key={platform.id}
             onClick={() => this.props.selectPlatform(platform)}
           >
           {platform.name}
-          </li>
+          </ListGroupItem>
         )
       })
   }
@@ -23,9 +24,9 @@ class PlatformList extends Component{
       <div>
         <Container>
           <Title> List Platforms :</Title>
-          <ul>
+          <ListGroup>
             {this.createListItems()}
-          </ul>
+          </ListGroup>
         </Container>
       </div>
     );
