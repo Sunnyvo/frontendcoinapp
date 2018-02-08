@@ -30,7 +30,7 @@ class App extends Component {
       let token = window.sessionStorage.getItem('key')
       if (token !== "")
       {
-        fetch('http://localhost:3000/prices', {
+        fetch('http://localhost:3000/platforms', {
           method: 'get',
         })
         .then((response)=> response.json())
@@ -50,6 +50,7 @@ class App extends Component {
               window.location.reload()
             },
             received: (data) => {
+              // debugger
               console.log('hi')
               data = JSON.parse(data.data)
               console.log(data)

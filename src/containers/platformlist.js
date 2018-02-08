@@ -2,31 +2,32 @@ import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import {connect} from 'react-redux';
 import "bulma/css/bulma.css";
-import { Container, Title } from 'bloomer';
+import { Container, Title, MenuList, MenuLink } from 'bloomer';
 import {selectPlatform } from '../action/action'
-import { ListGroup, ListGroupItem } from 'reactstrap';
+// import { ListGroup, ListGroupItem } from 'reactstrap';
 class PlatformList extends Component{
   createListItems(){
     return this.props.platforms.map(
       (platform) => {
         return (
-          <ListGroupItem
+          <li><MenuLink
             key={platform.id}
             onClick={() => this.props.selectPlatform(platform)}
           >
           {platform.name}
-          </ListGroupItem>
+          </MenuLink></li>
         )
-      })
+      }
+    )
   }
   render(){
     return(
       <div>
         <Container>
           <Title> List Platforms :</Title>
-          <ListGroup>
+          <MenuList>
             {this.createListItems()}
-          </ListGroup>
+          </MenuList>
         </Container>
       </div>
     );
