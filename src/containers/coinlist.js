@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Container,Title, Field , Label} from 'bloomer';
 import Chart from '../Chart';
-
 import { TypeChooser } from "react-stockcharts/lib/helper";
-
-// import { timeParse } from "d3-time-format";
-
-// const parseDate = timeParse("%Y-%m-%d");
-
+// import {Nav, NavItem, Button} from 'reactstrap';
 class CoinList extends Component {
-
-
   componentDidMount() {
 
 	}
@@ -52,9 +45,7 @@ class CoinList extends Component {
       <div>
         <Container>
           <Title> Platform details - Price of coin - {this.props.platform.name}</Title>
-
             {this.createListCoins()}
-
         </Container>
       </div>
     );

@@ -3,19 +3,19 @@ import { bindActionCreators } from "redux";
 import {connect} from 'react-redux';
 import "bulma/css/bulma.css";
 import { Container, Title, MenuList, MenuLink } from 'bloomer';
-import {selectPlatform } from '../action/action'
-// import { ListGroup, ListGroupItem } from 'reactstrap';
+import {selectPlatform } from '../action/action';
+import {Nav, NavItem, Button} from 'reactstrap';
 class PlatformList extends Component{
   createListItems(){
     return this.props.platforms.map(
       (platform) => {
         return (
-          <li><MenuLink
+          <NavItem
             key={platform.id}
             onClick={() => this.props.selectPlatform(platform)}
           >
-          {platform.name}
-          </MenuLink></li>
+          <Button color="info" style ={{margin : "5px"}}> {platform.name}  </Button>
+          </NavItem>
         )
       }
     )
@@ -25,9 +25,9 @@ class PlatformList extends Component{
       <div>
         <Container>
           <Title> List Platforms :</Title>
-          <MenuList>
+          <Nav>
             {this.createListItems()}
-          </MenuList>
+          </Nav>
         </Container>
       </div>
     );

@@ -6,6 +6,13 @@ export const  selectPlatform = (platform) => {
   }
 }
 
+export const  selectCoin = (coin) => {
+
+  return {
+    type: "COIN_SELECTED",
+    payload: coin
+  }
+}
 
 const receivePrices = (platforms) =>{
 	return {
@@ -19,9 +26,7 @@ const updatePricePlatform = (platform) => {
         type: "PLATFORM_SELECTED",
         payload: platform
       }
-
 }
-
 
 export const updatePlatforms = (platforms, current_platform) =>{
   return dispatch => {

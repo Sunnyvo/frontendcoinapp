@@ -5,6 +5,7 @@ import App from './App';
 import store from "./store";
 import {Provider} from 'react-redux';
 import APICable from './api/APICable';
+import 'bootstrap/dist/css/bootstrap.css';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
